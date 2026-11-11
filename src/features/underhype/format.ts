@@ -11,7 +11,7 @@ export function initials(name?: string | null) {
 }
 
 export function statusTitle(status?: string | null) {
-  return (status || 'new').replaceAll('_', ' ').replace(/\b\w/g, (value) => value.toUpperCase())
+  return (status || 'new').replace(/_/g, ' ').replace(/\b\w/g, (value) => value.toUpperCase())
 }
 
 export function csvCell(value: unknown) {

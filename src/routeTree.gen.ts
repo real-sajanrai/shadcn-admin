@@ -11,759 +11,35 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ClerkRouteRouteImport } from './routes/clerk/route'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
-import { Route as AuthenticatedContactsRouteImport } from './routes/_authenticated/contacts'
-import { Route as AuthenticatedHiringRouteImport } from './routes/_authenticated/hiring'
-import { Route as AuthenticatedAnalyticsRouteImport } from './routes/_authenticated/analytics'
-import { Route as AuthenticatedArchivedRouteImport } from './routes/_authenticated/archived'
-import { Route as AuthenticatedTeamRouteImport } from './routes/_authenticated/team'
 import { Route as AuthenticatedIndexRouteImport } from './routes/_authenticated/index'
+import { Route as AuthenticatedTeamRouteImport } from './routes/_authenticated/team'
+import { Route as AuthenticatedHiringRouteImport } from './routes/_authenticated/hiring'
+import { Route as AuthenticatedContactsRouteImport } from './routes/_authenticated/contacts'
+import { Route as AuthenticatedArchivedRouteImport } from './routes/_authenticated/archived'
+import { Route as AuthenticatedAnalyticsRouteImport } from './routes/_authenticated/analytics'
 import { Route as errors503RouteImport } from './routes/(errors)/503'
 import { Route as errors500RouteImport } from './routes/(errors)/500'
 import { Route as errors404RouteImport } from './routes/(errors)/404'
 import { Route as errors403RouteImport } from './routes/(errors)/403'
 import { Route as errors401RouteImport } from './routes/(errors)/401'
-import { Route as authSignUpRouteImport } from './routes/(auth)/sign-up'
-import { Route as authSignIn2RouteImport } from './routes/(auth)/sign-in-2'
-import { Route as authSignInRouteImport } from './routes/(auth)/sign-in'
-import { Route as authOtpRouteImport } from './routes/(auth)/otp'
-import { Route as authForgotPasswordRouteImport } from './routes/(auth)/forgot-password'
-import { Route as ClerkAuthenticatedRouteRouteImport } from './routes/clerk/_authenticated/route'
-import { Route as ClerkauthRouteRouteImport } from './routes/clerk/(auth)/route'
-import { Route as AuthenticatedSettingsRouteRouteImport } from './routes/_authenticated/settings/route'
-import { Route as AuthenticatedUsersIndexRouteImport } from './routes/_authenticated/users/index'
-import { Route as AuthenticatedTasksIndexRouteImport } from './routes/_authenticated/tasks/index'
-import { Route as AuthenticatedSettingsIndexRouteImport } from './routes/_authenticated/settings/index'
-import { Route as AuthenticatedHelpCenterIndexRouteImport } from './routes/_authenticated/help-center/index'
-import { Route as AuthenticatedChatsIndexRouteImport } from './routes/_authenticated/chats/index'
-import { Route as AuthenticatedAppsIndexRouteImport } from './routes/_authenticated/apps/index'
-import { Route as ClerkAuthenticatedUserManagementRouteImport } from './routes/clerk/_authenticated/user-management'
-import { Route as ClerkauthSignUpRouteImport } from './routes/clerk/(auth)/sign-up'
-import { Route as ClerkauthSignInRouteImport } from './routes/clerk/(auth)/sign-in'
-import { Route as AuthenticatedSettingsNotificationsRouteImport } from './routes/_authenticated/settings/notifications'
-import { Route as AuthenticatedSettingsDisplayRouteImport } from './routes/_authenticated/settings/display'
-import { Route as AuthenticatedSettingsAppearanceRouteImport } from './routes/_authenticated/settings/appearance'
-import { Route as AuthenticatedSettingsAccountRouteImport } from './routes/_authenticated/settings/account'
-import { Route as AuthenticatedErrorsErrorRouteImport } from './routes/_authenticated/errors/$error'
-
-const ClerkRouteRoute = ClerkRouteRouteImport.update({
-  id: '/clerk',
-  path: '/clerk',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
-  id: '/_authenticated',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuthenticatedContactsRoute = AuthenticatedContactsRouteImport.update({ id: '/_authenticated/contacts', path: '/contacts', getParentRoute: () => AuthenticatedRouteRoute } as any)
-const AuthenticatedHiringRoute = AuthenticatedHiringRouteImport.update({ id: '/_authenticated/hiring', path: '/hiring', getParentRoute: () => AuthenticatedRouteRoute } as any)
-const AuthenticatedAnalyticsRoute = AuthenticatedAnalyticsRouteImport.update({ id: '/_authenticated/analytics', path: '/analytics', getParentRoute: () => AuthenticatedRouteRoute } as any)
-const AuthenticatedArchivedRoute = AuthenticatedArchivedRouteImport.update({ id: '/_authenticated/archived', path: '/archived', getParentRoute: () => AuthenticatedRouteRoute } as any)
-const AuthenticatedTeamRoute = AuthenticatedTeamRouteImport.update({ id: '/_authenticated/team', path: '/team', getParentRoute: () => AuthenticatedRouteRoute } as any)
-const AuthenticatedIndexRoute = AuthenticatedIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
-const errors503Route = errors503RouteImport.update({
-  id: '/(errors)/503',
-  path: '/503',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const errors500Route = errors500RouteImport.update({
-  id: '/(errors)/500',
-  path: '/500',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const errors404Route = errors404RouteImport.update({
-  id: '/(errors)/404',
-  path: '/404',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const errors403Route = errors403RouteImport.update({
-  id: '/(errors)/403',
-  path: '/403',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const errors401Route = errors401RouteImport.update({
-  id: '/(errors)/401',
-  path: '/401',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const authSignUpRoute = authSignUpRouteImport.update({
-  id: '/(auth)/sign-up',
-  path: '/sign-up',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const authSignIn2Route = authSignIn2RouteImport.update({
-  id: '/(auth)/sign-in-2',
-  path: '/sign-in-2',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const authSignInRoute = authSignInRouteImport.update({
-  id: '/(auth)/sign-in',
-  path: '/sign-in',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const authOtpRoute = authOtpRouteImport.update({
-  id: '/(auth)/otp',
-  path: '/otp',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const authForgotPasswordRoute = authForgotPasswordRouteImport.update({
-  id: '/(auth)/forgot-password',
-  path: '/forgot-password',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ClerkAuthenticatedRouteRoute = ClerkAuthenticatedRouteRouteImport.update({
-  id: '/_authenticated',
-  getParentRoute: () => ClerkRouteRoute,
-} as any)
-const ClerkauthRouteRoute = ClerkauthRouteRouteImport.update({
-  id: '/(auth)',
-  getParentRoute: () => ClerkRouteRoute,
-} as any)
-const AuthenticatedSettingsRouteRoute =
-  AuthenticatedSettingsRouteRouteImport.update({
-    id: '/settings',
-    path: '/settings',
-    getParentRoute: () => AuthenticatedRouteRoute,
-  } as any)
-const AuthenticatedUsersIndexRoute = AuthenticatedUsersIndexRouteImport.update({
-  id: '/users/',
-  path: '/users/',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
-const AuthenticatedTasksIndexRoute = AuthenticatedTasksIndexRouteImport.update({
-  id: '/tasks/',
-  path: '/tasks/',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
-const AuthenticatedSettingsIndexRoute =
-  AuthenticatedSettingsIndexRouteImport.update({
-    id: '/',
-    path: '/',
-    getParentRoute: () => AuthenticatedSettingsRouteRoute,
-  } as any)
-const AuthenticatedHelpCenterIndexRoute =
-  AuthenticatedHelpCenterIndexRouteImport.update({
-    id: '/help-center/',
-    path: '/help-center/',
-    getParentRoute: () => AuthenticatedRouteRoute,
-  } as any)
-const AuthenticatedChatsIndexRoute = AuthenticatedChatsIndexRouteImport.update({
-  id: '/chats/',
-  path: '/chats/',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
-const AuthenticatedAppsIndexRoute = AuthenticatedAppsIndexRouteImport.update({
-  id: '/apps/',
-  path: '/apps/',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
-const ClerkAuthenticatedUserManagementRoute =
-  ClerkAuthenticatedUserManagementRouteImport.update({
-    id: '/user-management',
-    path: '/user-management',
-    getParentRoute: () => ClerkAuthenticatedRouteRoute,
-  } as any)
-const ClerkauthSignUpRoute = ClerkauthSignUpRouteImport.update({
-  id: '/sign-up',
-  path: '/sign-up',
-  getParentRoute: () => ClerkauthRouteRoute,
-} as any)
-const ClerkauthSignInRoute = ClerkauthSignInRouteImport.update({
-  id: '/sign-in',
-  path: '/sign-in',
-  getParentRoute: () => ClerkauthRouteRoute,
-} as any)
-const AuthenticatedSettingsNotificationsRoute =
-  AuthenticatedSettingsNotificationsRouteImport.update({
-    id: '/notifications',
-    path: '/notifications',
-    getParentRoute: () => AuthenticatedSettingsRouteRoute,
-  } as any)
-const AuthenticatedSettingsDisplayRoute =
-  AuthenticatedSettingsDisplayRouteImport.update({
-    id: '/display',
-    path: '/display',
-    getParentRoute: () => AuthenticatedSettingsRouteRoute,
-  } as any)
-const AuthenticatedSettingsAppearanceRoute =
-  AuthenticatedSettingsAppearanceRouteImport.update({
-    id: '/appearance',
-    path: '/appearance',
-    getParentRoute: () => AuthenticatedSettingsRouteRoute,
-  } as any)
-const AuthenticatedSettingsAccountRoute =
-  AuthenticatedSettingsAccountRouteImport.update({
-    id: '/account',
-    path: '/account',
-    getParentRoute: () => AuthenticatedSettingsRouteRoute,
-  } as any)
-const AuthenticatedErrorsErrorRoute =
-  AuthenticatedErrorsErrorRouteImport.update({
-    id: '/errors/$error',
-    path: '/errors/$error',
-    getParentRoute: () => AuthenticatedRouteRoute,
-  } as any)
-
-export interface FileRoutesByFullPath {
-  '/': typeof AuthenticatedIndexRoute
-  '/contacts': typeof AuthenticatedContactsRoute
-  '/hiring': typeof AuthenticatedHiringRoute
-  '/analytics': typeof AuthenticatedAnalyticsRoute
-  '/archived': typeof AuthenticatedArchivedRoute
-  '/team': typeof AuthenticatedTeamRoute
-  '/clerk': typeof ClerkAuthenticatedRouteRouteWithChildren
-  '/settings': typeof AuthenticatedSettingsRouteRouteWithChildren
-  '/forgot-password': typeof authForgotPasswordRoute
-  '/otp': typeof authOtpRoute
-  '/sign-in': typeof authSignInRoute
-  '/sign-in-2': typeof authSignIn2Route
-  '/sign-up': typeof authSignUpRoute
-  '/401': typeof errors401Route
-  '/403': typeof errors403Route
-  '/404': typeof errors404Route
-  '/500': typeof errors500Route
-  '/503': typeof errors503Route
-  '/errors/$error': typeof AuthenticatedErrorsErrorRoute
-  '/settings/account': typeof AuthenticatedSettingsAccountRoute
-  '/settings/appearance': typeof AuthenticatedSettingsAppearanceRoute
-  '/settings/display': typeof AuthenticatedSettingsDisplayRoute
-  '/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
-  '/clerk/sign-in': typeof ClerkauthSignInRoute
-  '/clerk/sign-up': typeof ClerkauthSignUpRoute
-  '/clerk/user-management': typeof ClerkAuthenticatedUserManagementRoute
-  '/apps/': typeof AuthenticatedAppsIndexRoute
-  '/chats/': typeof AuthenticatedChatsIndexRoute
-  '/help-center/': typeof AuthenticatedHelpCenterIndexRoute
-  '/settings/': typeof AuthenticatedSettingsIndexRoute
-  '/tasks/': typeof AuthenticatedTasksIndexRoute
-  '/users/': typeof AuthenticatedUsersIndexRoute
-}
-export interface FileRoutesByTo {
-  '/clerk': typeof ClerkAuthenticatedRouteRouteWithChildren
-  '/forgot-password': typeof authForgotPasswordRoute
-  '/otp': typeof authOtpRoute
-  '/sign-in': typeof authSignInRoute
-  '/sign-in-2': typeof authSignIn2Route
-  '/sign-up': typeof authSignUpRoute
-  '/401': typeof errors401Route
-  '/403': typeof errors403Route
-  '/404': typeof errors404Route
-  '/500': typeof errors500Route
-  '/503': typeof errors503Route
-  '/': typeof AuthenticatedIndexRoute
-  '/errors/$error': typeof AuthenticatedErrorsErrorRoute
-  '/settings/account': typeof AuthenticatedSettingsAccountRoute
-  '/settings/appearance': typeof AuthenticatedSettingsAppearanceRoute
-  '/settings/display': typeof AuthenticatedSettingsDisplayRoute
-  '/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
-  '/clerk/sign-in': typeof ClerkauthSignInRoute
-  '/clerk/sign-up': typeof ClerkauthSignUpRoute
-  '/clerk/user-management': typeof ClerkAuthenticatedUserManagementRoute
-  '/apps': typeof AuthenticatedAppsIndexRoute
-  '/chats': typeof AuthenticatedChatsIndexRoute
-  '/help-center': typeof AuthenticatedHelpCenterIndexRoute
-  '/settings': typeof AuthenticatedSettingsIndexRoute
-  '/tasks': typeof AuthenticatedTasksIndexRoute
-  '/users': typeof AuthenticatedUsersIndexRoute
-}
-export interface FileRoutesById {
-  __root__: typeof rootRouteImport
-  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
-  '/clerk': typeof ClerkRouteRouteWithChildren
-  '/_authenticated/settings': typeof AuthenticatedSettingsRouteRouteWithChildren
-  '/clerk/(auth)': typeof ClerkauthRouteRouteWithChildren
-  '/clerk/_authenticated': typeof ClerkAuthenticatedRouteRouteWithChildren
-  '/(auth)/forgot-password': typeof authForgotPasswordRoute
-  '/(auth)/otp': typeof authOtpRoute
-  '/(auth)/sign-in': typeof authSignInRoute
-  '/(auth)/sign-in-2': typeof authSignIn2Route
-  '/(auth)/sign-up': typeof authSignUpRoute
-  '/(errors)/401': typeof errors401Route
-  '/(errors)/403': typeof errors403Route
-  '/(errors)/404': typeof errors404Route
-  '/(errors)/500': typeof errors500Route
-  '/(errors)/503': typeof errors503Route
-  '/_authenticated/': typeof AuthenticatedIndexRoute
-  '/_authenticated/contacts': typeof AuthenticatedContactsRoute
-  '/_authenticated/hiring': typeof AuthenticatedHiringRoute
-  '/_authenticated/analytics': typeof AuthenticatedAnalyticsRoute
-  '/_authenticated/archived': typeof AuthenticatedArchivedRoute
-  '/_authenticated/team': typeof AuthenticatedTeamRoute
-  '/_authenticated/errors/$error': typeof AuthenticatedErrorsErrorRoute
-  '/_authenticated/settings/account': typeof AuthenticatedSettingsAccountRoute
-  '/_authenticated/settings/appearance': typeof AuthenticatedSettingsAppearanceRoute
-  '/_authenticated/settings/display': typeof AuthenticatedSettingsDisplayRoute
-  '/_authenticated/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
-  '/clerk/(auth)/sign-in': typeof ClerkauthSignInRoute
-  '/clerk/(auth)/sign-up': typeof ClerkauthSignUpRoute
-  '/clerk/_authenticated/user-management': typeof ClerkAuthenticatedUserManagementRoute
-  '/_authenticated/apps/': typeof AuthenticatedAppsIndexRoute
-  '/_authenticated/chats/': typeof AuthenticatedChatsIndexRoute
-  '/_authenticated/help-center/': typeof AuthenticatedHelpCenterIndexRoute
-  '/_authenticated/settings/': typeof AuthenticatedSettingsIndexRoute
-  '/_authenticated/tasks/': typeof AuthenticatedTasksIndexRoute
-  '/_authenticated/users/': typeof AuthenticatedUsersIndexRoute
-}
-export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/contacts'
-    | '/hiring'
-    | '/analytics'
-    | '/archived'
-    | '/team'
-    | '/contacts'
-    | '/hiring'
-    | '/analytics'
-    | '/archived'
-    | '/team'
-    | '/clerk'
-    | '/settings'
-    | '/forgot-password'
-    | '/otp'
-    | '/sign-in'
-    | '/sign-in-2'
-    | '/sign-up'
-    | '/401'
-    | '/403'
-    | '/404'
-    | '/500'
-    | '/503'
-    | '/errors/$error'
-    | '/settings/account'
-    | '/settings/appearance'
-    | '/settings/display'
-    | '/settings/notifications'
-    | '/clerk/sign-in'
-    | '/clerk/sign-up'
-    | '/clerk/user-management'
-    | '/apps/'
-    | '/chats/'
-    | '/help-center/'
-    | '/settings/'
-    | '/tasks/'
-    | '/users/'
-  fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/clerk'
-    | '/forgot-password'
-    | '/otp'
-    | '/sign-in'
-    | '/sign-in-2'
-    | '/sign-up'
-    | '/401'
-    | '/403'
-    | '/404'
-    | '/500'
-    | '/503'
-    | '/'
-    | '/errors/$error'
-    | '/settings/account'
-    | '/settings/appearance'
-    | '/settings/display'
-    | '/settings/notifications'
-    | '/clerk/sign-in'
-    | '/clerk/sign-up'
-    | '/clerk/user-management'
-    | '/apps'
-    | '/chats'
-    | '/help-center'
-    | '/settings'
-    | '/tasks'
-    | '/users'
-  id:
-    | '__root__'
-    | '/_authenticated'
-    | '/clerk'
-    | '/_authenticated/settings'
-    | '/clerk/(auth)'
-    | '/clerk/_authenticated'
-    | '/(auth)/forgot-password'
-    | '/(auth)/otp'
-    | '/(auth)/sign-in'
-    | '/(auth)/sign-in-2'
-    | '/(auth)/sign-up'
-    | '/(errors)/401'
-    | '/(errors)/403'
-    | '/(errors)/404'
-    | '/(errors)/500'
-    | '/(errors)/503'
-    | '/_authenticated/'
-    | '/_authenticated/contacts'
-    | '/_authenticated/hiring'
-    | '/_authenticated/analytics'
-    | '/_authenticated/archived'
-    | '/_authenticated/team'
-    | '/_authenticated/errors/$error'
-    | '/_authenticated/settings/account'
-    | '/_authenticated/settings/appearance'
-    | '/_authenticated/settings/display'
-    | '/_authenticated/settings/notifications'
-    | '/clerk/(auth)/sign-in'
-    | '/clerk/(auth)/sign-up'
-    | '/clerk/_authenticated/user-management'
-    | '/_authenticated/apps/'
-    | '/_authenticated/chats/'
-    | '/_authenticated/help-center/'
-    | '/_authenticated/settings/'
-    | '/_authenticated/tasks/'
-    | '/_authenticated/users/'
-  fileRoutesById: FileRoutesById
-}
-export interface RootRouteChildren {
-  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
-  ClerkRouteRoute: typeof ClerkRouteRouteWithChildren
-  authForgotPasswordRoute: typeof authForgotPasswordRoute
-  authOtpRoute: typeof authOtpRoute
-  authSignInRoute: typeof authSignInRoute
-  authSignIn2Route: typeof authSignIn2Route
-  authSignUpRoute: typeof authSignUpRoute
-  errors401Route: typeof errors401Route
-  errors403Route: typeof errors403Route
-  errors404Route: typeof errors404Route
-  errors500Route: typeof errors500Route
-  errors503Route: typeof errors503Route
-}
-
-declare module '@tanstack/react-router' {
-  interface FileRoutesByPath {
-    '/clerk': {
-      id: '/clerk'
-      path: '/clerk'
-      fullPath: '/clerk'
-      preLoaderRoute: typeof ClerkRouteRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_authenticated': {
-      id: '/_authenticated'
-      path: ''
-      fullPath: '/'
-      preLoaderRoute: typeof AuthenticatedRouteRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_authenticated/contacts': { id: '/_authenticated/contacts'; path: '/contacts'; fullPath: '/contacts'; preLoaderRoute: typeof AuthenticatedContactsRouteImport; parentRoute: typeof AuthenticatedRouteRoute }
-    '/_authenticated/hiring': { id: '/_authenticated/hiring'; path: '/hiring'; fullPath: '/hiring'; preLoaderRoute: typeof AuthenticatedHiringRouteImport; parentRoute: typeof AuthenticatedRouteRoute }
-    '/_authenticated/analytics': { id: '/_authenticated/analytics'; path: '/analytics'; fullPath: '/analytics'; preLoaderRoute: typeof AuthenticatedAnalyticsRouteImport; parentRoute: typeof AuthenticatedRouteRoute }
-    '/_authenticated/archived': { id: '/_authenticated/archived'; path: '/archived'; fullPath: '/archived'; preLoaderRoute: typeof AuthenticatedArchivedRouteImport; parentRoute: typeof AuthenticatedRouteRoute }
-    '/_authenticated/team': { id: '/_authenticated/team'; path: '/team'; fullPath: '/team'; preLoaderRoute: typeof AuthenticatedTeamRouteImport; parentRoute: typeof AuthenticatedRouteRoute }
-    '/_authenticated/': {
-      id: '/_authenticated/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof AuthenticatedIndexRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/(errors)/503': {
-      id: '/(errors)/503'
-      path: '/503'
-      fullPath: '/503'
-      preLoaderRoute: typeof errors503RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/(errors)/500': {
-      id: '/(errors)/500'
-      path: '/500'
-      fullPath: '/500'
-      preLoaderRoute: typeof errors500RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/(errors)/404': {
-      id: '/(errors)/404'
-      path: '/404'
-      fullPath: '/404'
-      preLoaderRoute: typeof errors404RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/(errors)/403': {
-      id: '/(errors)/403'
-      path: '/403'
-      fullPath: '/403'
-      preLoaderRoute: typeof errors403RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/(errors)/401': {
-      id: '/(errors)/401'
-      path: '/401'
-      fullPath: '/401'
-      preLoaderRoute: typeof errors401RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/(auth)/sign-up': {
-      id: '/(auth)/sign-up'
-      path: '/sign-up'
-      fullPath: '/sign-up'
-      preLoaderRoute: typeof authSignUpRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/(auth)/sign-in-2': {
-      id: '/(auth)/sign-in-2'
-      path: '/sign-in-2'
-      fullPath: '/sign-in-2'
-      preLoaderRoute: typeof authSignIn2RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/(auth)/sign-in': {
-      id: '/(auth)/sign-in'
-      path: '/sign-in'
-      fullPath: '/sign-in'
-      preLoaderRoute: typeof authSignInRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/(auth)/otp': {
-      id: '/(auth)/otp'
-      path: '/otp'
-      fullPath: '/otp'
-      preLoaderRoute: typeof authOtpRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/(auth)/forgot-password': {
-      id: '/(auth)/forgot-password'
-      path: '/forgot-password'
-      fullPath: '/forgot-password'
-      preLoaderRoute: typeof authForgotPasswordRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/clerk/_authenticated': {
-      id: '/clerk/_authenticated'
-      path: ''
-      fullPath: '/clerk'
-      preLoaderRoute: typeof ClerkAuthenticatedRouteRouteImport
-      parentRoute: typeof ClerkRouteRoute
-    }
-    '/clerk/(auth)': {
-      id: '/clerk/(auth)'
-      path: ''
-      fullPath: '/clerk'
-      preLoaderRoute: typeof ClerkauthRouteRouteImport
-      parentRoute: typeof ClerkRouteRoute
-    }
-    '/_authenticated/settings': {
-      id: '/_authenticated/settings'
-      path: '/settings'
-      fullPath: '/settings'
-      preLoaderRoute: typeof AuthenticatedSettingsRouteRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/users/': {
-      id: '/_authenticated/users/'
-      path: '/users'
-      fullPath: '/users/'
-      preLoaderRoute: typeof AuthenticatedUsersIndexRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/tasks/': {
-      id: '/_authenticated/tasks/'
-      path: '/tasks'
-      fullPath: '/tasks/'
-      preLoaderRoute: typeof AuthenticatedTasksIndexRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/settings/': {
-      id: '/_authenticated/settings/'
-      path: '/'
-      fullPath: '/settings/'
-      preLoaderRoute: typeof AuthenticatedSettingsIndexRouteImport
-      parentRoute: typeof AuthenticatedSettingsRouteRoute
-    }
-    '/_authenticated/help-center/': {
-      id: '/_authenticated/help-center/'
-      path: '/help-center'
-      fullPath: '/help-center/'
-      preLoaderRoute: typeof AuthenticatedHelpCenterIndexRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/chats/': {
-      id: '/_authenticated/chats/'
-      path: '/chats'
-      fullPath: '/chats/'
-      preLoaderRoute: typeof AuthenticatedChatsIndexRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/apps/': {
-      id: '/_authenticated/apps/'
-      path: '/apps'
-      fullPath: '/apps/'
-      preLoaderRoute: typeof AuthenticatedAppsIndexRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/clerk/_authenticated/user-management': {
-      id: '/clerk/_authenticated/user-management'
-      path: '/user-management'
-      fullPath: '/clerk/user-management'
-      preLoaderRoute: typeof ClerkAuthenticatedUserManagementRouteImport
-      parentRoute: typeof ClerkAuthenticatedRouteRoute
-    }
-    '/clerk/(auth)/sign-up': {
-      id: '/clerk/(auth)/sign-up'
-      path: '/sign-up'
-      fullPath: '/clerk/sign-up'
-      preLoaderRoute: typeof ClerkauthSignUpRouteImport
-      parentRoute: typeof ClerkauthRouteRoute
-    }
-    '/clerk/(auth)/sign-in': {
-      id: '/clerk/(auth)/sign-in'
-      path: '/sign-in'
-      fullPath: '/clerk/sign-in'
-      preLoaderRoute: typeof ClerkauthSignInRouteImport
-      parentRoute: typeof ClerkauthRouteRoute
-    }
-    '/_authenticated/settings/notifications': {
-      id: '/_authenticated/settings/notifications'
-      path: '/notifications'
-      fullPath: '/settings/notifications'
-      preLoaderRoute: typeof AuthenticatedSettingsNotificationsRouteImport
-      parentRoute: typeof AuthenticatedSettingsRouteRoute
-    }
-    '/_authenticated/settings/display': {
-      id: '/_authenticated/settings/display'
-      path: '/display'
-      fullPath: '/settings/display'
-      preLoaderRoute: typeof AuthenticatedSettingsDisplayRouteImport
-      parentRoute: typeof AuthenticatedSettingsRouteRoute
-    }
-    '/_authenticated/settings/appearance': {
-      id: '/_authenticated/settings/appearance'
-      path: '/appearance'
-      fullPath: '/settings/appearance'
-      preLoaderRoute: typeof AuthenticatedSettingsAppearanceRouteImport
-      parentRoute: typeof AuthenticatedSettingsRouteRoute
-    }
-    '/_authenticated/settings/account': {
-      id: '/_authenticated/settings/account'
-      path: '/account'
-      fullPath: '/settings/account'
-      preLoaderRoute: typeof AuthenticatedSettingsAccountRouteImport
-      parentRoute: typeof AuthenticatedSettingsRouteRoute
-    }
-    '/_authenticated/errors/$error': {
-      id: '/_authenticated/errors/$error'
-      path: '/errors/$error'
-      fullPath: '/errors/$error'
-      preLoaderRoute: typeof AuthenticatedErrorsErrorRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-  }
-}
-
-interface AuthenticatedSettingsRouteRouteChildren {
-  AuthenticatedSettingsAccountRoute: typeof AuthenticatedSettingsAccountRoute
-  AuthenticatedSettingsAppearanceRoute: typeof AuthenticatedSettingsAppearanceRoute
-  AuthenticatedSettingsDisplayRoute: typeof AuthenticatedSettingsDisplayRoute
-  AuthenticatedSettingsNotificationsRoute: typeof AuthenticatedSettingsNotificationsRoute
-  AuthenticatedSettingsIndexRoute: typeof AuthenticatedSettingsIndexRoute
-}
-
-const AuthenticatedSettingsRouteRouteChildren: AuthenticatedSettingsRouteRouteChildren =
-  {
-    AuthenticatedSettingsAccountRoute: AuthenticatedSettingsAccountRoute,
-    AuthenticatedSettingsAppearanceRoute: AuthenticatedSettingsAppearanceRoute,
-    AuthenticatedSettingsDisplayRoute: AuthenticatedSettingsDisplayRoute,
-    AuthenticatedSettingsNotificationsRoute:
-      AuthenticatedSettingsNotificationsRoute,
-    AuthenticatedSettingsIndexRoute: AuthenticatedSettingsIndexRoute,
-  }
-
-const AuthenticatedSettingsRouteRouteWithChildren =
-  AuthenticatedSettingsRouteRoute._addFileChildren(
-    AuthenticatedSettingsRouteRouteChildren,
-  )
-
-interface AuthenticatedRouteRouteChildren {
-  AuthenticatedSettingsRouteRoute: typeof AuthenticatedSettingsRouteRouteWithChildren
-  AuthenticatedContactsRoute: typeof AuthenticatedContactsRoute
-  AuthenticatedHiringRoute: typeof AuthenticatedHiringRoute
-  AuthenticatedAnalyticsRoute: typeof AuthenticatedAnalyticsRoute
-  AuthenticatedArchivedRoute: typeof AuthenticatedArchivedRoute
-  AuthenticatedTeamRoute: typeof AuthenticatedTeamRoute
-  AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
-  AuthenticatedErrorsErrorRoute: typeof AuthenticatedErrorsErrorRoute
-  AuthenticatedAppsIndexRoute: typeof AuthenticatedAppsIndexRoute
-  AuthenticatedChatsIndexRoute: typeof AuthenticatedChatsIndexRoute
-  AuthenticatedHelpCenterIndexRoute: typeof AuthenticatedHelpCenterIndexRoute
-  AuthenticatedTasksIndexRoute: typeof AuthenticatedTasksIndexRoute
-  AuthenticatedUsersIndexRoute: typeof AuthenticatedUsersIndexRoute
-}
-
-const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
-  AuthenticatedContactsRoute,
-  AuthenticatedHiringRoute,
-  AuthenticatedAnalyticsRoute,
-  AuthenticatedArchivedRoute,
-  AuthenticatedTeamRoute,
-  AuthenticatedSettingsRouteRoute: AuthenticatedSettingsRouteRouteWithChildren,
-  AuthenticatedIndexRoute: AuthenticatedIndexRoute,
-  AuthenticatedErrorsErrorRoute: AuthenticatedErrorsErrorRoute,
-  AuthenticatedAppsIndexRoute: AuthenticatedAppsIndexRoute,
-  AuthenticatedChatsIndexRoute: AuthenticatedChatsIndexRoute,
-  AuthenticatedHelpCenterIndexRoute: AuthenticatedHelpCenterIndexRoute,
-  AuthenticatedTasksIndexRoute: AuthenticatedTasksIndexRoute,
-  AuthenticatedUsersIndexRoute: AuthenticatedUsersIndexRoute,
-}
-
-const AuthenticatedRouteRouteWithChildren =
-  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
-
-interface ClerkauthRouteRouteChildren {
-  ClerkauthSignInRoute: typeof ClerkauthSignInRoute
-  ClerkauthSignUpRoute: typeof ClerkauthSignUpRoute
-}
-
-const ClerkauthRouteRouteChildren: ClerkauthRouteRouteChildren = {
-  ClerkauthSignInRoute: ClerkauthSignInRoute,
-  ClerkauthSignUpRoute: ClerkauthSignUpRoute,
-}
-
-const ClerkauthRouteRouteWithChildren = ClerkauthRouteRoute._addFileChildren(
-  ClerkauthRouteRouteChildren,
-)
-
-interface ClerkAuthenticatedRouteRouteChildren {
-  ClerkAuthenticatedUserManagementRoute: typeof ClerkAuthenticatedUserManagementRoute
-}
-
-const ClerkAuthenticatedRouteRouteChildren: ClerkAuthenticatedRouteRouteChildren =
-  {
-    ClerkAuthenticatedUserManagementRoute:
-      ClerkAuthenticatedUserManagementRoute,
-  }
-
-const ClerkAuthenticatedRouteRouteWithChildren =
-  ClerkAuthenticatedRouteRoute._addFileChildren(
-    ClerkAuthenticatedRouteRouteChildren,
-  )
-
-interface ClerkRouteRouteChildren {
-  ClerkauthRouteRoute: typeof ClerkauthRouteRouteWithChildren
-  ClerkAuthenticatedRouteRoute: typeof ClerkAuthenticatedRouteRouteWithChildren
-}
-
-const ClerkRouteRouteChildren: ClerkRouteRouteChildren = {
-  ClerkauthRouteRoute: ClerkauthRouteRouteWithChildren,
-  ClerkAuthenticatedRouteRoute: ClerkAuthenticatedRouteRouteWithChildren,
-}
-
-const ClerkRouteRouteWithChildren = ClerkRouteRoute._addFileChildren(
-  ClerkRouteRouteChildren,
-)
-
-const rootRouteChildren: RootRouteChildren = {
-  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
-  ClerkRouteRoute: ClerkRouteRouteWithChildren,
-  authForgotPasswordRoute: authForgotPasswordRoute,
-  authOtpRoute: authOtpRoute,
-  authSignInRoute: authSignInRoute,
-  authSignIn2Route: authSignIn2Route,
-  authSignUpRoute: authSignUpRoute,
-  errors401Route: errors401Route,
-  errors403Route: errors403Route,
-  errors404Route: errors404Route,
-  errors500Route: errors500Route,
-  errors503Route: errors503Route,
-}
-export const routeTree = rootRouteImport
-  ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>()
+import { Route as authSignUpRouteImport } from ÕÈZ®Ëkºwµçkz»§Â+a…æş
+Ş§ûZŠWè­û¥–‹­¦ë]\ÜİÛÜ™›İ]Bˆ]]İ›İ]Nˆ\[Ùˆ]]İ›İ]Bˆ]]ÚYÛ’[”›İ]Nˆ\[Ùˆ]]ÚYÛ’[”›İ]Bˆ]]ÚYÛ’[Œ”›İ]Nˆ\[Ùˆ]]ÚYÛ’[Œ”›İ]Bˆ]]ÚYÛ•\›İ]Nˆ\[Ùˆ]]ÚYÛ•\›İ]Bˆ\œ›ÜœÍT›İ]Nˆ\[Ùˆ\œ›ÜœÍT›İ]Bˆ\œ›ÜœÍÔ›İ]Nˆ\[Ùˆ\œ›ÜœÍÔ›İ]Bˆ\œ›ÜœÍ›İ]Nˆ\[Ùˆ\œ›ÜœÍ›İ]Bˆ\œ›ÜœÍL›İ]Nˆ\[Ùˆ\œ›ÜœÍL›İ]Bˆ\œ›ÜœÍLÔ›İ]Nˆ\[Ùˆ\œ›ÜœÍLÔ›İ]BŸB‚™XÛ\™H[Ù[H	Ğ[œİXÚËÜ™XXİ\›İ]\‰ÈÂˆ[\™˜XÙHš[T›İ]\ĞT]Âˆ	ËØÛ\šÉÎˆÂˆYˆ	ËØÛ\šÉÂˆ]ˆ	ËØÛ\šÉÂˆ[]ˆ	ËØÛ\šÉÂˆ™SØY\”›İ]Nˆ\[ÙˆÛ\šÔ›İ]T›İ]R[\Üˆ\™[›İ]Nˆ\[Ùˆ›Ûİ›İ]R[\ÜˆBˆ	Ë×Ø]][XØ]Y	ÎˆÂˆYˆ	Ë×Ø]][XØ]Y	Âˆ]ˆ	ÉÂˆ[]ˆ	ËÉÂˆ™SØY\”›İ]Nˆ\[Ùˆ]][XØ]Y›İ]T›İ]R[\Üˆ\™[›İ]Nˆ\[Ùˆ›Ûİ›İ]R[\ÜˆBˆ	Ë×Ø]][XØ]YÉÎˆÂˆYˆ	Ë×Ø]][XØ]YÉÂˆ]ˆ	ËÉÂˆ[]ˆ	ËÉÂˆ™SØY\”›İ]Nˆ\[Ùˆ]][XØ]Y[™^›İ]R[\Üˆ\™[›İ]Nˆ\[Ùˆ]][XØ]Y›İ]T›İ]BˆBˆ	Ë×Ø]][XØ]YİX[IÎˆÂˆYˆ	Ë×Ø]][XØ]YİX[IÂˆ]ˆ	ËİX[IÂˆ[]ˆ	ËİX[IÂˆ™SØY\”›İ]Nˆ\[Ùˆ]][XØ]YX[T›İ]R[\Üˆ\™[›İ]Nˆ\[Ùˆ]][XØ]Y›İ]T›İ]BˆBˆ	Ë×Ø]][XØ]YÚ\š[™ÉÎˆÂˆYˆ	Ë×Ø]][XØ]YÚ\š[™ÉÂˆ]ˆ	ËÚ\š[™ÉÂˆ[]ˆ	ËÚ\š[™ÉÂˆ™SØY\”›İ]Nˆ\[Ùˆ]][XØ]Y\š[™Ô›İ]R[\Üˆ\™[›İ]Nˆ\[Ùˆ]][XØ]Y›İ]T›İ]BˆBˆ	Ë×Ø]][XØ]YØÛÛXİÉÎˆÂˆYˆ	Ë×Ø]][XØ]YØÛÛXİÉÂˆ]ˆ	ËØÛÛXİÉÂˆ[]ˆ	ËØÛÛXİÉÂˆ™SØY\”›İ]Nˆ\[Ùˆ]][XØ]YÛÛXİÔ›İ]R[\Üˆ\™[›İ]Nˆ\[Ùˆ]][XØ]Y›İ]T›İ]BˆBˆ	Ë×Ø]][XØ]YØ\˜Ú]™Y	ÎˆÂˆYˆ	Ë×Ø]][XØ]YØ\˜Ú]™Y	Âˆ]ˆ	ËØ\˜Ú]™Y	Âˆ[]ˆ	ËØ\˜Ú]™Y	Âˆ™SØY\”›İ]Nˆ\[Ùˆ]][XØ]Y\˜Ú]™Y›İ]R[\Üˆ\™[›İ]Nˆ\[Ùˆ]][XØ]Y›İ]T›İ]BˆBˆ	Ë×Ø]][XØ]YØ[˜[]XÜÉÎˆÂˆYˆ	Ë×Ø]][XØ]YØ[˜[]XÜÉÂˆ]ˆ	ËØ[˜[]XÜÉÂˆ[]ˆ	ËØ[˜[]XÜÉÂˆ™SØY\”›İ]Nˆ\[Ùˆ]][XØ]Y[˜[]XÜÔ›İ]R[\Üˆ\™[›İ]Nˆ\[Ùˆ]][XØ]Y›İ]T›İ]BˆBˆ	ËÊ\œ›ÜœÊKÍLÉÎˆÂˆYˆ	ËÊ\œ›ÜœÊKÍLÉÂˆ]ˆ	ËÍLÉÂˆ[]ˆ	ËÍLÉÂˆ™SØY\”›İ]Nˆ\[Ùˆ\œ›ÜœÍLÔ›İ]R[\Üˆ\™[›İ]Nˆ\[Ùˆ›Ûİ›İ]R[\ÜˆBˆ	ËÊ\œ›ÜœÊKÍL	ÎˆÂˆYˆ	ËÊ\œ›ÜœÊKÍL	Âˆ]ˆ	ËÍL	Âˆ[]ˆ	ËÍL	Âˆ™SØY\”›İ]Nˆ\[Ùˆ\œ›ÜœÍL›İ]R[\Üˆ\™[›İ]Nˆ\[Ùˆ›Ûİ›İ]R[\ÜˆBˆ	ËÊ\œ›ÜœÊKÍ	ÎˆÂˆYˆ	ËÊ\œ›ÜœÊKÍ	Âˆ]ˆ	ËÍ	Âˆ[]ˆ	ËÍ	Âˆ™SØY\”›İ]Nˆ\[Ùˆ\œ›ÜœÍ›İ]R[\Üˆ\™[›İ]Nˆ\[Ùˆ›Ûİ›İ]R[\ÜˆBˆ	ËÊ\œ›ÜœÊKÍÉÎˆÂˆYˆ	ËÊ\œ›ÜœÊKÍÉÂˆ]ˆ	ËÍÉÂˆ[]ˆ	ËÍÉÂˆ™SØY\”›İ]Nˆ\[Ùˆ\œ›ÜœÍÔ›İ]R[\Üˆ\™[›İ]Nˆ\[Ùˆ›Ûİ›İ]R[\ÜˆBˆ	ËÊ\œ›ÜœÊKÍIÎˆÂˆYˆ	ËÊ\œ›ÜœÊKÍIÂˆ]ˆ	ËÍIÂˆ[]ˆ	ËÍIÂˆ™SØY\”›İ]Nˆ\[Ùˆ\œ›ÜœÍT›İ]R[\Üˆ\™[›İ]Nˆ\[Ùˆ›Ûİ›İ]R[\ÜˆBˆ	ËÊ]]
+KÜÚYÛ‹]\	ÎˆÂˆYˆ	ËÊ]]
+KÜÚYÛ‹]\	Âˆ]ˆ	ËÜÚYÛ‹]\	Âˆ[]ˆ	ËÜÚYÛ‹]\	Âˆ™SØY\”›İ]Nˆ\[Ùˆ]]ÚYÛ•\›İ]R[\Üˆ\™[›İ]Nˆ\[Ùˆ›Ûİ›İ]R[\ÜˆBˆ	ËÊ]]
+KÜÚYÛ‹Z[‹L‰ÎˆÂˆYˆ	ËÊ]]
+KÜÚYÛ‹Z[‹L‰Âˆ]ˆ	ËÜÚYÛ‹Z[‹L‰Âˆ[]ˆ	ËÜÚYÛ‹Z[‹L‰Âˆ™SØY\”›İ]Nˆ\[Ùˆ]]ÚYÛ’[Œ”›İ]R[\Üˆ\™[›İ]Nˆ\[Ùˆ›Ûİ›İ]R[\ÜˆBˆ	ËÊ]]
+KÜÚYÛ‹Z[‰ÎˆÂˆYˆ	ËÊ]]
+KÜÚYÛ‹Z[‰Âˆ]ˆ	ËÜÚYÛ‹Z[‰Âˆ[]ˆ	ËÜÚYÛ‹Z[‰Âˆ™SØY\”›İ]Nˆ\[Ùˆ]]ÚYÛ’[”›İ]R[\Üˆ\™[›İ]Nˆ\[Ùˆ›Ûİ›İ]R[\ÜˆBˆ	ËÊ]]
+KÛİ	ÎˆÂˆYˆ	ËÊ]]
+KÛİ	Âˆ]ˆ	ËÛİ	Âˆ[]ˆ	ËÛİ	Âˆ™SØY\”›İ]Nˆ\[Ùˆ]]İ›İ]R[\Üˆ\™[›İ]Nˆ\[Ùˆ›Ûİ›İ]R[\ÜˆBˆ	ËÊ]]
+KÙ›Ü™Ûİ\\ÜİÛÜ™	ÎˆÂˆYˆ	ËÊ]]
+KÙ›Ü™Ûİ\\ÜİÛÜ™	Âˆ]ˆ	ËÙ›Ü™Ûİ\\ÜİÛÜ™	Âˆ[]ˆ	ËÙ›Ü™Ûİ\\ÜİÛÜ™	Âˆ™SØY\”›İ]Nˆ\[Ùˆ]]›Ü™Ûİ\ÜİÛÜ™›İ]R[\Üˆ\™[›İ]Nˆ\[Ùˆ›Ûİ›İ]R[\ÜˆBˆ	ËØÛ\šË×Ø]][XØ]Y	ÎˆÂˆYˆ	ËØÛ\šË×Ø]][XØ]Y	Âˆ]ˆ	ÉÂˆ[]ˆ	ËØÛ\šÉÂˆ™SØY\”›İ]Nˆ\[ÙˆÛ\šĞ]][XØ]Y›İ]T›İ]R[\Üˆ\™[›İ]Nˆ\[ÙˆÛ\šÔ›İ]T›İ]BˆBˆ	ËØÛ\šËÊ]]
+IÎˆÂˆYˆ	ËØÛ\šËÊ]]
+IÂˆ]ˆ	ÉÂˆ[]ˆ	ËØÛ\šÉÂˆ™SØY\”›İ]Nˆ\[ÙˆÛ\šØ]]›İ]T›İ]R[\Üˆ\™[›İ]Nˆ\[ÙˆÛ\šÔ›İ]T›İ]BˆBˆ	Ë×Ø]][XØ]YÜÙ][™ÜÉÎˆÂˆYˆ	Ë×Ø]][XØ]YÜÙ][™ÜÉÂˆ]ˆ	ËÜÙ][™ÜÉÂˆ[]ˆ	ËÜÙ][™ÜÉÂˆ™SØY\”›İ]Nˆ\[Ùˆ]][XØ]YÙ][™ÜÔ›İ]T›İ]R[\Üˆ\™[›İ]Nˆ\[Ùˆ]][XØ]Y›İ]T›İ]BˆBˆ	Ë×Ø]][XØ]Yİ\Ù\œËÉÎˆÂˆYˆ	Ë×Ø]][XØ]Yİ\Ù\œËÉÂˆ]ˆ	Ëİ\Ù\œÉÂˆ[]ˆ	Ëİ\Ù\œËÉÂˆ™SØY\”›İ]Nˆ\[Ùˆ]][XØ]Y\Ù\œÒ[™^›İ]R[\Üˆ\™[›İ]Nˆ\[Ùˆ]][XØ]Y›İ]T›İ]BˆBˆ	Ë×Ø]][XØ]Yİ\ÚÜËÉÎˆÂˆYˆ	Ë×Ø]][XØ]Yİ\ÚÜËÉÂˆ]ˆ	Ëİ\ÚÜÉÂˆ[]ˆ	Ëİ\ÚÜËÉÂˆ™SØY\”›İ]Nˆ\[Ùˆ]][XØ]Y\ÚÜÒ[™^›İ]R[\Üˆ\™[›İ]Nˆ\[Ùˆ]][XØ]Y›İ]T›İ]BˆBˆ	Ë×Ø]][XØ]YÜÙ][™ÜËÉÎˆÂˆYˆ	Ë×Ø]][XØ]YÜÙ][™ÜËÉÂˆ]ˆ	ËÉÂˆ[]ˆ	ËÜÙ][™ÜËÉÂˆ™SØY\”›İ]Nˆ\[Ùˆ]][XØ]YÙ][™ÜÒ[™^›İ]R[\Üˆ\™[›İ]Nˆ\[Ùˆ]][XØ]YÙ][™ÜÔ›İ]T›İ]BˆBˆ	Ë×Ø]][XØ]YÚ[XÙ[\‹ÉÎˆÂˆYˆ	Ë×Ø]][XØ]YÚ[XÙ[\‹ÉÂˆ]ˆ	ËÚ[XÙ[\‰Âˆ[]ˆ	ËÚ[XÙ[\‹ÉÂˆ™SØY\”›İ]Nˆ\[Ùˆ]][XØ]Y[Ù[\’[™^›İ]R[\Üˆ\™[›İ]Nˆ\[Ùˆ]][XØ]Y›İ]T›İ]BˆBˆ	Ë×Ø]][XØ]YØÚ]ËÉÎˆÂˆYˆ	Ë×Ø]][XØ]YØÚ]ËÉÂˆ]ˆ	ËØÚ]ÉÂˆ[]ˆ	ËØÚ]ËÉÂˆ™SØY\”›İ]Nˆ\[Ùˆ]][XØ]YÚ]Ò[™^›İ]R[\Üˆ\™[›İ]Nˆ\[Ùˆ]][XØ]Y›İ]T›İ]BˆBˆ	Ë×Ø]][XØ]YØ\ËÉÎˆÂˆYˆ	Ë×Ø]][XØ]YØ\ËÉÂˆ]ˆ	ËØ\ÉÂˆ[]ˆ	ËØ\ËÉÂˆ™SØY\”›İ]Nˆ\[Ùˆ]][XØ]Y\Ò[™^›İ]R[\Üˆ\™[›İ]Nˆ\[Ùˆ]][XØ]Y›İ]T›İ]BˆBˆ	ËØÛ\šË×Ø]][XØ]Yİ\Ù\‹[X[˜YÙ[Y[	ÎˆÂˆYˆ	ËØÛ\šË×Ø]][XØ]Yİ\Ù\‹[X[˜YÙ[Y[	Âˆ]ˆ	Ëİ\Ù\‹[X[˜YÙ[Y[	Âˆ[]ˆ	ËØÛ\šËİ\Ù\‹[X[˜YÙ[Y[	Âˆ™SØY\”›İ]Nˆ\[ÙˆÛ\šĞ]][XØ]Y\Ù\“X[˜YÙ[Y[›İ]R[\Üˆ\™[›İ]Nˆ\[ÙˆÛ\šĞ]][XØ]Y›İ]T›İ]BˆBˆ	ËØÛ\šËÊ]]
+KÜÚYÛ‹]\	ÎˆÂˆYˆ	ËØÛ\šËÊ]]
+KÜÚYÛ‹]\	Âˆ]ˆ	ËÜÚYÛ‹]\	Âˆ[]ˆ	ËØÛ\šËÜÚYÛ‹]\	Âˆ™SØY\”›İ]Nˆ\[ÙˆÛ\šØ]]ÚYÛ•\›İ]R[\Üˆ\™[›İ]Nˆ\[ÙˆÛ\šØ]]›İ]T›İ]BˆBˆ	ËØÛ\šËÊ]]
+KÜÚYÛ‹Z[‰ÎˆÂˆYˆ	ËØÛ\šËÊ]]
+KÜÚYÛ‹Z[‰Âˆ]ˆ	ËÜÚYÛ‹Z[‰Âˆ[]ˆ	ËØÛ\šËÜÚYÛ‹Z[‰Âˆ™SØY\”›İ]Nˆ\[ÙˆÛ\šØ]]ÚYÛ’[”›İ]R[\Üˆ\™[›İ]Nˆ\[ÙˆÛ\šØ]]›İ]T›İ]BˆBˆ	Ë×Ø]][XØ]YÜÙ][™ÜËÛ›İYšXØ][ÛœÉÎˆÂˆYˆ	Ë×Ø]][XØ]YÜÙ][™ÜËÛ›İYšXØ][ÛœÉÂˆ]ˆ	ËÛ›İYšXØ][ÛœÉÂˆ[]ˆ	ËÜÙ][™ÜËÛ›İYšXØ][ÛœÉÂˆ™SØY\”›İ]Nˆ\[Ùˆ]][XØ]YÙ][™ÜÓ›İYšXØ][ÛœÔ›İ]R[\Üˆ\™[›İ]Nˆ\[Ùˆ]][XØ]YÙ][™ÜÔ›İ]T›İ]BˆBˆ	Ë×Ø]][XØ]YÜÙ][™ÜËÙ\Ü^IÎˆÂˆYˆ	Ë×Ø]][XØ]YÜÙ][™ÜËÙ\Ü^IÂˆ]ˆ	ËÙ\Ü^IÂˆ[]ˆ	ËÜÙ][™ÜËÙ\Ü^IÂˆ™SØY\”›İ]Nˆ\[Ùˆ]][XØ]YÙ][™ÜÑ\Ü^T›İ]R[\Üˆ\™[›İ]Nˆ\[Ùˆ]][XØ]YÙ][™ÜÔ›İ]T›İ]BˆBˆ	Ë×Ø]][XØ]YÜÙ][™ÜËØ\X\˜[˜ÙIÎˆÂˆYˆ	Ë×Ø]][XØ]YÜÙ][™ÜËØ\X\˜[˜ÙIÂˆ]ˆ	ËØ\X\˜[˜ÙIÂˆ[]ˆ	ËÜÙ][™ÜËØ\X\˜[˜ÙIÂˆ™SØY\”›İ]Nˆ\[Ùˆ]][XØ]YÙ][™ÜĞ\X\˜[˜ÙT›İ]R[\Üˆ\™[›İ]Nˆ\[Ùˆ]][XØ]YÙ][™ÜÔ›İ]T›İ]BˆBˆ	Ë×Ø]][XØ]YÜÙ][™ÜËØXØÛİ[	ÎˆÂˆYˆ	Ë×Ø]][XØ]YÜÙ][™ÜËØXØÛİ[	Âˆ]ˆ	ËØXØÛİ[	Âˆ[]ˆ	ËÜÙ][™ÜËØXØÛİ[	Âˆ™SØY\”›İ]Nˆ\[Ùˆ]][XØ]YÙ][™ÜĞXØÛİ[›İ]R[\Üˆ\™[›İ]Nˆ\[Ùˆ]][XØ]YÙ][™ÜÔ›İ]T›İ]BˆBˆ	Ë×Ø]][XØ]YÙ\œ›ÜœËÉ\œ›Ü‰ÎˆÂˆYˆ	Ë×Ø]][XØ]YÙ\œ›ÜœËÉ\œ›Ü‰Âˆ]ˆ	ËÙ\œ›ÜœËÉ\œ›Ü‰Âˆ[]ˆ	ËÙ\œ›ÜœËÉ\œ›Ü‰Âˆ™SØY\”›İ]Nˆ\[Ùˆ]][XØ]Y\œ›ÜœÑ\œ›Ü”›İ]R[\Üˆ\™[›İ]Nˆ\[Ùˆ]][XØ]Y›İ]T›İ]BˆBˆBŸB‚š[\™˜XÙH]][XØ]YÙ][™ÜÔ›İ]T›İ]PÚ[™[ˆÂˆ]][XØ]YÙ][™ÜĞXØÛİ[›İ]Nˆ\[Ùˆ]][XØ]YÙ][™ÜĞXØÛİ[›İ]Bˆ]][XØ]YÙ][™ÜĞ\X\˜[˜ÙT›İ]Nˆ\[Ùˆ]][XØ]YÙ][™ÜĞ\X\˜[˜ÙT›İ]Bˆ]][XØ]YÙ][™ÜÑ\Ü^T›İ]Nˆ\[Ùˆ]][XØ]YÙ][™ÜÑ\Ü^T›İ]Bˆ]][XØ]YÙ][™ÜÓ›İYšXØ][ÛœÔ›İ]Nˆ\[Ùˆ]][XØ]YÙ][™ÜÓ›İYšXØ][ÛœÔ›İ]Bˆ]][XØ]YÙ][™ÜÒ[™^›İ]Nˆ\[Ùˆ]][XØ]YÙ][™ÜÒ[™^›İ]BŸB‚˜ÛÛœİ]][XØ]YÙ][™ÜÔ›İ]T›İ]PÚ[™[ˆ]][XØ]YÙ][™ÜÔ›İ]T›İ]PÚ[™[ˆBˆÂˆ]][XØ]YÙ][™ÜĞXØÛİ[›İ]Nˆ]][XØ]YÙ][™ÜĞXØÛİ[›İ]Kˆ]][XØ]YÙ][™ÜĞ\X\˜[˜ÙT›İ]Nˆ]][XØ]YÙ][™ÜĞ\X\˜[˜ÙT›İ]Kˆ]][XØ]YÙ][™ÜÑ\Ü^T›İ]Nˆ]][XØ]YÙ][™ÜÑ\Ü^T›İ]Kˆ]][XØ]YÙ][™ÜÓ›İYšXØ][ÛœÔ›İ]N‚ˆ]][XØ]YÙ][™ÜÓ›İYšXØ][ÛœÔ›İ]Kˆ]][XØ]YÙ][™ÜÒ[™^›İ]Nˆ]][XØ]YÙ][™ÜÒ[™^›İ]KˆB‚˜ÛÛœİ]][XØ]YÙ][™ÜÔ›İ]T›İ]UÚ]Ú[™[ˆBˆ]][XØ]YÙ][™ÜÔ›İ]T›İ]K—ØYš[PÚ[™[Šˆ]][XØ]YÙ][™ÜÔ›İ]T›İ]PÚ[™[‹ˆ
+B‚š[\™˜XÙH]][XØ]Y›İ]T›İ]PÚ[™[ˆÂˆ]][XØ]YÙ][™ÜÔ›İ]T›İ]Nˆ\[Ùˆ]][XØ]YÙ][™ÜÔ›İ]T›İ]UÚ]Ú[™[‚ˆ]][XØ]Y[˜[]XÜÔ›İ]Nˆ\[Ùˆ]][XØ]Y[˜[]XÜÔ›İ]Bˆ]][XØ]Y\˜Ú]™Y›İ]Nˆ\[Ùˆ]][XØ]Y\˜Ú]™Y›İ]Bˆ]][XØ]YÛÛXİÔ›İ]Nˆ\[Ùˆ]][XØ]YÛÛXİÔ›İ]Bˆ]][XØ]Y\š[™Ô›İ]Nˆ\[Ùˆ]][XØ]Y\š[™Ô›İ]Bˆ]][XØ]YX[T›İ]Nˆ\[Ùˆ]][XØ]YX[T›İ]Bˆ]][XØ]Y[™^›İ]Nˆ\[Ùˆ]][XØ]Y[™^›İ]Bˆ]][XØ]Y\œ›ÜœÑ\œ›Ü”›İ]Nˆ\[Ùˆ]][XØ]Y\œ›ÜœÑ\œ›Ü”›İ]Bˆ]][XØ]Y\Ò[™^›İ]Nˆ\[Ùˆ]][XØ]Y\Ò[™^›İ]Bˆ]][XØ]YÚ]Ò[™^›İ]Nˆ\[Ùˆ]][XØ]YÚ]Ò[™^›İ]Bˆ]][XØ]Y[Ù[\’[™^›İ]Nˆ\[Ùˆ]][XØ]Y[Ù[\’[™^›İ]Bˆ]][XØ]Y\ÚÜÒ[™^›İ]Nˆ\[Ùˆ]][XØ]Y\ÚÜÒ[™^›İ]Bˆ]][XØ]Y\Ù\œÒ[™^›İ]Nˆ\[Ùˆ]][XØ]Y\Ù\œÒ[™^›İ]BŸB‚˜ÛÛœİ]][XØ]Y›İ]T›İ]PÚ[™[ˆ]][XØ]Y›İ]T›İ]PÚ[™[ˆHÂˆ]][XØ]YÙ][™ÜÔ›İ]T›İ]Nˆ]][XØ]YÙ][™ÜÔ›İ]T›İ]UÚ]Ú[™[‹ˆ]][XØ]Y[˜[]XÜÔ›İ]Nˆ]][XØ]Y[˜[]XÜÔ›İ]Kˆ]][XØ]Y\˜Ú]™Y›İ]Nˆ]][XØ]Y\˜Ú]™Y›İ]Kˆ]][XØ]YÛÛXİÔ›İ]Nˆ]][XØ]YÛÛXİÔ›İ]Kˆ]][XØ]Y\š[™Ô›İ]Nˆ]][XØ]Y\š[™Ô›İ]Kˆ]][XØ]YX[T›İ]Nˆ]][XØ]YX[T›İ]Kˆ]][XØ]Y[™^›İ]Nˆ]][XØ]Y[™^›İ]Kˆ]][XØ]Y\œ›ÜœÑ\œ›Ü”›İ]Nˆ]][XØ]Y\œ›ÜœÑ\œ›Ü”›İ]Kˆ]][XØ]Y\Ò[™^›İ]Nˆ]][XØ]Y\Ò[™^›İ]Kˆ]][XØ]YÚ]Ò[™^›İ]Nˆ]][XØ]YÚ]Ò[™^›İ]Kˆ]][XØ]Y[Ù[\’[™^›İ]Nˆ]][XØ]Y[Ù[\’[™^›İ]Kˆ]][XØ]Y\ÚÜÒ[™^›İ]Nˆ]][XØ]Y\ÚÜÒ[™^›İ]Kˆ]][XØ]Y\Ù\œÒ[™^›İ]Nˆ]][XØ]Y\Ù\œÒ[™^›İ]KŸB‚˜ÛÛœİ]][XØ]Y›İ]T›İ]UÚ]Ú[™[ˆBˆ]][XØ]Y›İ]T›İ]K—ØYš[PÚ[™[Š]][XØ]Y›İ]T›İ]PÚ[™[ŠB‚š[\™˜XÙHÛ\šØ]]›İ]T›İ]PÚ[™[ˆÂˆÛ\šØ]]ÚYÛ’[”›İ]Nˆ\[ÙˆÛ\šØ]]ÚYÛ’[”›İ]BˆÛ\šØ]]ÚYÛ•\›İ]Nˆ\[ÙˆÛ\šØ]]ÚYÛ•\›İ]BŸB‚˜ÛÛœİÛ\šØ]]›İ]T›İ]PÚ[™[ˆÛ\šØ]]›İ]T›İ]PÚ[™[ˆHÂˆÛ\šØ]]ÚYÛ’[”›İ]NˆÛ\šØ]]ÚYÛ’[”›İ]KˆÛ\šØ]]ÚYÛ•\›İ]NˆÛ\šØ]]ÚYÛ•\›İ]KŸB‚˜ÛÛœİÛ\šØ]]›İ]T›İ]UÚ]Ú[™[ˆHÛ\šØ]]›İ]T›İ]K—ØYš[PÚ[™[ŠˆÛ\šØ]]›İ]T›İ]PÚ[™[‹ŠB‚š[\™˜XÙHÛ\šĞ]][XØ]Y›İ]T›İ]PÚ[™[ˆÂˆÛ\šĞ]][XØ]Y\Ù\“X[˜YÙ[Y[›İ]Nˆ\[ÙˆÛ\šĞ]][XØ]Y\Ù\“X[˜YÙ[Y[›İ]BŸB‚˜ÛÛœİÛ\šĞ]][XØ]Y›İ]T›İ]PÚ[™[ˆÛ\šĞ]][XØ]Y›İ]T›İ]PÚ[™[ˆBˆÂˆÛ\šĞ]][XØ]Y\Ù\“X[˜YÙ[Y[›İ]N‚ˆÛ\šĞ]][XØ]Y\Ù\“X[˜YÙ[Y[›İ]KˆB‚˜ÛÛœİÛ\šĞ]][XØ]Y›İ]T›İ]UÚ]Ú[™[ˆBˆÛ\šĞ]][XØ]Y›İ]T›İ]K—ØYš[PÚ[™[ŠˆÛ\šĞ]][XØ]Y›İ]T›İ]PÚ[™[‹ˆ
+B‚š[\™˜XÙHÛ\šÔ›İ]T›İ]PÚ[™[ˆÂˆÛ\šØ]]›İ]T›İ]Nˆ\[ÙˆÛ\šØ]]›İ]T›İ]UÚ]Ú[™[‚ˆÛ\šĞ]][XØ]Y›İ]T›İ]Nˆ\[ÙˆÛ\šĞ]][XØ]Y›İ]T›İ]UÚ]Ú[™[‚ŸB‚˜ÛÛœİÛ\šÔ›İ]T›İ]PÚ[™[ˆÛ\šÔ›İ]T›İ]PÚ[™[ˆHÂˆÛ\šØ]]›İ]T›İ]NˆÛ\šØ]]›İ]T›İ]UÚ]Ú[™[‹ˆÛ\šĞ]][XØ]Y›İ]T›İ]NˆÛ\šĞ]][XØ]Y›İ]T›İ]UÚ]Ú[™[‹ŸB‚˜ÛÛœİÛ\šÔ›İ]T›İ]UÚ]Ú[™[ˆHÛ\šÔ›İ]T›İ]K—ØYš[PÚ[™[ŠˆÛ\šÔ›İ]T›İ]PÚ[™[‹ŠB‚˜ÛÛœİ›Ûİ›İ]PÚ[™[ˆ›Ûİ›İ]PÚ[™[ˆHÂˆ]][XØ]Y›İ]T›İ]Nˆ]][XØ]Y›İ]T›İ]UÚ]Ú[™[‹ˆÛ\šÔ›İ]T›İ]NˆÛ\šÔ›İ]T›İ]UÚ]Ú[™[‹ˆ]]›Ü™Ûİ\ÜİÛÜ™›İ]Nˆ]]›Ü™Ûİ\ÜİÛÜ™›İ]Kˆ]]İ›İ]Nˆ]]İ›İ]Kˆ]]ÚYÛ’[”›İ]Nˆ]]ÚYÛ’[”›İ]Kˆ]]ÚYÛ’[Œ”›İ]Nˆ]]ÚYÛ’[Œ”›İ]Kˆ]]ÚYÛ•\›İ]Nˆ]]ÚYÛ•\›İ]Kˆ\œ›ÜœÍT›İ]Nˆ\œ›ÜœÍT›İ]Kˆ\œ›ÜœÍÔ›İ]Nˆ\œ›ÜœÍÔ›İ]Kˆ\œ›ÜœÍ›İ]Nˆ\œ›ÜœÍ›İ]Kˆ\œ›ÜœÍL›İ]Nˆ\œ›ÜœÍL›İ]Kˆ\œ›ÜœÍLÔ›İ]Nˆ\œ›ÜœÍLÔ›İ]KŸB™^ÜÛÛœİ›İ]U™YHH›Ûİ›İ]R[\Üˆ—ØYš[PÚ[™[Š›Ûİ›İ]PÚ[™[ŠBˆ—ØYš[U\\Ïš[T›İ]U\\ÏŠ
+B
