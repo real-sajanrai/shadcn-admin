@@ -1,7 +1,7 @@
 import { Archive, BriefcaseBusiness, ChartNoAxesCombined, LayoutDashboard, MessageSquare, Settings, ShieldCheck, Users } from 'lucide-react'
 import { type SidebarData } from '../types'
 export const sidebarData: SidebarData = {
- user:{name:'Underhype Admin',email:'underhype.digital@gmail.com',avatar:'/avatars/shadcn.jpg'},
+ user:{name:'Underhype Admin',email:'Workspace administrator',avatar:'/avatars/shadcn.jpg'},
  teams:[{name:'Underhype.digital',logo:ShieldCheck,plan:'Creative agency workspace'}],
  navGroups:[
   {title:'WORKSPACE',items:[
