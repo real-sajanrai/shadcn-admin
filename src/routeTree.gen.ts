@@ -11,6 +11,11 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ClerkRouteRouteImport } from './routes/clerk/route'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AuthenticatedContactsRouteImport } from './routes/_authenticated/contacts'
+import { Route as AuthenticatedHiringRouteImport } from './routes/_authenticated/hiring'
+import { Route as AuthenticatedAnalyticsRouteImport } from './routes/_authenticated/analytics'
+import { Route as AuthenticatedArchivedRouteImport } from './routes/_authenticated/archived'
+import { Route as AuthenticatedTeamRouteImport } from './routes/_authenticated/team'
 import { Route as AuthenticatedIndexRouteImport } from './routes/_authenticated/index'
 import { Route as errors503RouteImport } from './routes/(errors)/503'
 import { Route as errors500RouteImport } from './routes/(errors)/500'
@@ -49,6 +54,11 @@ const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
   id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedContactsRoute = AuthenticatedContactsRouteImport.update({ id: '/_authenticated/contacts', path: '/contacts', getParentRoute: () => AuthenticatedRouteRoute } as any)
+const AuthenticatedHiringRoute = AuthenticatedHiringRouteImport.update({ id: '/_authenticated/hiring', path: '/hiring', getParentRoute: () => AuthenticatedRouteRoute } as any)
+const AuthenticatedAnalyticsRoute = AuthenticatedAnalyticsRouteImport.update({ id: '/_authenticated/analytics', path: '/analytics', getParentRoute: () => AuthenticatedRouteRoute } as any)
+const AuthenticatedArchivedRoute = AuthenticatedArchivedRouteImport.update({ id: '/_authenticated/archived', path: '/archived', getParentRoute: () => AuthenticatedRouteRoute } as any)
+const AuthenticatedTeamRoute = AuthenticatedTeamRouteImport.update({ id: '/_authenticated/team', path: '/team', getParentRoute: () => AuthenticatedRouteRoute } as any)
 const AuthenticatedIndexRoute = AuthenticatedIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -199,6 +209,16 @@ const AuthenticatedErrorsErrorRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof AuthenticatedIndexRoute
+  '/contacts': typeof AuthenticatedContactsRoute
+  '/hiring': typeof AuthenticatedHiringRoute
+  '/analytics': typeof AuthenticatedAnalyticsRoute
+  '/archived': typeof AuthenticatedArchivedRoute
+  '/team': typeof AuthenticatedTeamRoute
+  '/contacts': typeof AuthenticatedContactsRoute
+  '/hiring': typeof AuthenticatedHiringRoute
+  '/analytics': typeof AuthenticatedAnalyticsRoute
+  '/archived': typeof AuthenticatedArchivedRoute
+  '/team': typeof AuthenticatedTeamRoute
   '/clerk': typeof ClerkAuthenticatedRouteRouteWithChildren
   '/settings': typeof AuthenticatedSettingsRouteRouteWithChildren
   '/forgot-password': typeof authForgotPasswordRoute
@@ -272,6 +292,11 @@ export interface FileRoutesById {
   '/(errors)/500': typeof errors500Route
   '/(errors)/503': typeof errors503Route
   '/_authenticated/': typeof AuthenticatedIndexRoute
+  '/_authenticated/contacts': typeof AuthenticatedContactsRoute
+  '/_authenticated/hiring': typeof AuthenticatedHiringRoute
+  '/_authenticated/analytics': typeof AuthenticatedAnalyticsRoute
+  '/_authenticated/archived': typeof AuthenticatedArchivedRoute
+  '/_authenticated/team': typeof AuthenticatedTeamRoute
   '/_authenticated/errors/$error': typeof AuthenticatedErrorsErrorRoute
   '/_authenticated/settings/account': typeof AuthenticatedSettingsAccountRoute
   '/_authenticated/settings/appearance': typeof AuthenticatedSettingsAppearanceRoute
@@ -291,6 +316,16 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/contacts'
+    | '/hiring'
+    | '/analytics'
+    | '/archived'
+    | '/team'
+    | '/contacts'
+    | '/hiring'
+    | '/analytics'
+    | '/archived'
+    | '/team'
     | '/clerk'
     | '/settings'
     | '/forgot-password'
@@ -363,6 +398,11 @@ export interface FileRouteTypes {
     | '/(errors)/500'
     | '/(errors)/503'
     | '/_authenticated/'
+    | '/_authenticated/contacts'
+    | '/_authenticated/hiring'
+    | '/_authenticated/analytics'
+    | '/_authenticated/archived'
+    | '/_authenticated/team'
     | '/_authenticated/errors/$error'
     | '/_authenticated/settings/account'
     | '/_authenticated/settings/appearance'
@@ -410,6 +450,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/contacts': { id: '/_authenticated/contacts'; path: '/contacts'; fullPath: '/contacts'; preLoaderRoute: typeof AuthenticatedContactsRouteImport; parentRoute: typeof AuthenticatedRouteRoute }
+    '/_authenticated/hiring': { id: '/_authenticated/hiring'; path: '/hiring'; fullPath: '/hiring'; preLoaderRoute: typeof AuthenticatedHiringRouteImport; parentRoute: typeof AuthenticatedRouteRoute }
+    '/_authenticated/analytics': { id: '/_authenticated/analytics'; path: '/analytics'; fullPath: '/analytics'; preLoaderRoute: typeof AuthenticatedAnalyticsRouteImport; parentRoute: typeof AuthenticatedRouteRoute }
+    '/_authenticated/archived': { id: '/_authenticated/archived'; path: '/archived'; fullPath: '/archived'; preLoaderRoute: typeof AuthenticatedArchivedRouteImport; parentRoute: typeof AuthenticatedRouteRoute }
+    '/_authenticated/team': { id: '/_authenticated/team'; path: '/team'; fullPath: '/team'; preLoaderRoute: typeof AuthenticatedTeamRouteImport; parentRoute: typeof AuthenticatedRouteRoute }
     '/_authenticated/': {
       id: '/_authenticated/'
       path: '/'
@@ -634,6 +679,11 @@ const AuthenticatedSettingsRouteRouteWithChildren =
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedSettingsRouteRoute: typeof AuthenticatedSettingsRouteRouteWithChildren
+  AuthenticatedContactsRoute: typeof AuthenticatedContactsRoute
+  AuthenticatedHiringRoute: typeof AuthenticatedHiringRoute
+  AuthenticatedAnalyticsRoute: typeof AuthenticatedAnalyticsRoute
+  AuthenticatedArchivedRoute: typeof AuthenticatedArchivedRoute
+  AuthenticatedTeamRoute: typeof AuthenticatedTeamRoute
   AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
   AuthenticatedErrorsErrorRoute: typeof AuthenticatedErrorsErrorRoute
   AuthenticatedAppsIndexRoute: typeof AuthenticatedAppsIndexRoute
@@ -644,6 +694,11 @@ interface AuthenticatedRouteRouteChildren {
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedContactsRoute,
+  AuthenticatedHiringRoute,
+  AuthenticatedAnalyticsRoute,
+  AuthenticatedArchivedRoute,
+  AuthenticatedTeamRoute,
   AuthenticatedSettingsRouteRoute: AuthenticatedSettingsRouteRouteWithChildren,
   AuthenticatedIndexRoute: AuthenticatedIndexRoute,
   AuthenticatedErrorsErrorRoute: AuthenticatedErrorsErrorRoute,
