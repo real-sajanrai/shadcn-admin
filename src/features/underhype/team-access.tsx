@@ -1,17 +1,15 @@
-import {useState} from 'react'
-import {useAdminIdentity} from './use-admin'
-import {useMutation,useQuery,useQueryClient} from '@tanstack/react-query'
-import {ShieldCheck,UserPlus,UserRoundX} from 'lucide-react'
-import {toast} from 'sonner'
+import {ShieldCheck,Users} from 'lucide-react'
 import {Badge} from '@/components/ui/badge'
-import {Button} from '@/components/ui/button'
 import {Card,CardContent,CardDescription,CardHeader,CardTitle} from '@/components/ui/card'
-import {Input} from '@/components/ui/input'
-import {Select,SelectContent,SelectItem,SelectTrigger,SelectValue} from '@/components/ui/select'
-import {adminApi} from './api'
+import {useAdminIdentity} from './use-admin'
+
 export function TeamAccessPage(){
- const identity=useAdminIdentity(),[email,setEmail]=useState(''),[role,setRole]=useState<'editor'|'viewer'>('viewer'),q=useQuery({queryKey:['underhype-admin','users'],queryFn:adminApi.users}),client=useQueryClient()
- const add=useMutation({mutationFn:()=>adminApi.addUser(email,role),onSuccess:()=>{toast.success('Access added');setEmail('');client.invalidateQueries({queryKey:['underhype-admin','users']})},onError:e=>toast.error(e.message)})
- const revoke=useMutation({mutationFn:(v:string)=>adminApi.revokeUser(v),onSuccess:()=>{toast.success('Access revoked');client.invalidateQueries({queryKey:['underhype-admin','users']})},onError:e=>toast.error(e.message)})
- return <div className='space-y-5'><div><Badge>OWNER CONTROLS</Badge><h1 className='mt-2 text-3xl font-semibold'>Team access</h1><p className='text-sm text-muted-foreground'>Manage dashboard roles. Cloudflare Access policy must also permit each email.</p></div>{identity.data?.role==='owner'?<><Card><CardHeader><CardTitle>Add a team member</CardTitle><CardDescription>Grant Editor or read-only access inside the dashboard.</CardDescription></CardHeader><CardContent className='flex flex-col gap-2 sm:flex-row'><Input type='email' placeholder='name@example.com' value={email} onChange={e=>setEmail(e.target.value)}/><Select value={role} onValueChange={v=>setRole(v as 'editor'|'viewer')}><SelectTrigger className='w-full sm:w-40'><SelectValue/></SelectTrigger><SelectContent><SelectItem value='viewer'>Read-only</SelectItem><SelectItem value='editor'>Editor</SelectItem></SelectContent></Select><Button disabled={!email.trim()||add.isPending} onClick={()=>add.mutate()}><UserPlus className='mr-2 size-4'/>Add member</Button></CardContent></Card><Card><CardHeader><CardTitle>Authorised people</CardTitle><CardDescription>Owner access is protected.</CardDescription></CardHeader><CardContent>{q.isError&&<p className='text-sm text-destructive'>{q.error.message}</p>}{q.data?.users.map(u=><div key={u.email} className='flex flex-col justify-between gap-2 border-t py-3 sm:flex-row sm:items-center'><div><p className='text-sm font-medium'>{u.email}</p><p className='text-xs text-muted-foreground'>Added {new Date(u.created_at).toLocaleDateString()}</p></div><div className='flex items-center gap-3'><Badge variant={u.role==='owner'?'default':'secondary'}>{u.role}</Badge>{u.role!=='owner'&&<Button size='sm' variant='outline' onClick={()=>{if(confirm(`Revoke access for ${u.email}?`))revoke.mutate(u.email)}}><UserRoundX className='mr-2 size-3.5'/>Revoke</Button>}</div></div>)}</CardContent></Card></>:<Card><CardContent className='p-5 text-sm text-muted-foreground'>Only the workspace owner can manage team access. Your current role: {identity.data?.role??'verifying'}.</CardContent></Card>}<div className='flex gap-2 rounded-lg border p-3 text-xs text-muted-foreground'><ShieldCheck className='size-4 shrink-0 text-emerald-500'/>Cloudflare Access remains the outer authentication layer.</div></div>
+ const identity=useAdminIdentity()
+ return <div className='space-y-5'>
+  <div><Badge>ACCESS OVERVIEW</Badge><h1 className='mt-2 text-3xl font-semibold'>Team access</h1><p className='text-sm text-muted-foreground'>Authentication is enforced by Cloudflare Access and the staging Worker.</p></div>
+  <Card><CardHeader><CardTitle className='flex items-center gap-2'><Users className='size-5'/>Current session</CardTitle><CardDescription>Identity returned by the authenticated staging Worker.</CardDescription></CardHeader><CardContent className='space-y-3'>
+   {identity.isLoading?<p className='text-sm text-muted-foreground'>Verifying access…</p>:identity.isError?<p role='alert' className='text-sm text-destructive'>Unable to verify your identity. Team administration is unavailable.</p>:<><div className='rounded-lg border p-3'><p className='text-xs text-muted-foreground'>Signed in as</p><p className='font-medium'>{identity.data.email}</p><Badge className='mt-2' variant={identity.data.role==='owner'?'default':'secondary'}>{identity.data.role}</Badge></div><p className='text-sm text-muted-foreground'>Role and membership changes are disabled in this dashboard because the staging Worker currently exposes a read-only allowlist for team administration.</p></>}
+  </CardContent></Card>
+  <div className='flex gap-2 rounded-lg border p-3 text-xs text-muted-foreground'><ShieldCheck className='size-4 shrink-0 text-emerald-500'/>Cloudflare Access remains the outer authentication layer. Add or revoke team members through the reviewed access-management process, not this staging UI.</div>
+ </div>
 }
