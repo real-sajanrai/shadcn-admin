@@ -1,119 +1,63 @@
-# Shadcn Admin Dashboard
+# Underhype.digital Admin Dashboard
 
-Admin Dashboard UI crafted with Shadcn and Vite. Built with responsiveness and accessibility in mind.
+A customised agency dashboard built on the MIT-licensed Shadcn Admin project.
 
-![alt text](public/images/shadcn-admin.png)
+## Current implementation
 
-[![Sponsored by Clerk](https://img.shields.io/badge/Sponsored%20by-Clerk-5b6ee1?logo=clerk)](https://go.clerk.com/GttUAaK)
+- Underhype blue brand palette and responsive shadcn/ui layout
+- Staging environment indicator
+- Cloudflare Access remains the authentication gateway
+- Staging Worker API integration using same-origin requests and no-store caching
+- Overview cards for contacts, hiring applications, new submissions and totals
+- Contact enquiry and hiring application tables with search, status filters, pagination and details; status changes remain disabled in staging
+- Secure resume downloads through the authenticated Worker endpoint
+- CSV exports from the existing staging export API
+- Analytics charts for trends, geography, service demand and hiring roles
+- Archived-record view and restore actions
+- Read-only team access and session identity view
+- Light and dark themes
 
-I've been creating dashboard UIs at work and for my personal projects. I always wanted to make a reusable collection of dashboard UI for future projects; and here it is now. While I've created a few custom components, some of the code is directly adapted from ShadcnUI examples.
+## Backend contract
 
-> This is not a starter project (template) though. I'll probably make one in the future.
+The frontend expects these existing Worker routes:
 
-## Features
+- GET /api/admin/me
+- GET /api/admin/overview
+- GET /api/admin/analytics?range=7|30|90|365|all
+- GET /api/admin/contacts
+- GET /api/admin/hiring
+- GET /api/admin/export
+- GET /api/admin/archive
+- POST /api/admin/archive
+- POST /api/admin/restore
+- GET /api/admin/resume?id=...
 
-- Light/dark mode
-- Responsive
-- Accessible
-- With built-in Sidebar component
-- Global search command
-- 10+ pages
-- Extra custom components
-- RTL support
+Team management writes are intentionally not exposed in the staging dashboard.
 
-<details>
-<summary>Customized Components (click to expand)</summary>
+## Environment and security
 
-This project uses Shadcn UI components, but some have been slightly modified for better RTL (Right-to-Left) support and other improvements. These customized components differ from the original Shadcn UI versions.
+This branch is a dashboard frontend development branch only. It does not deploy the Cloudflare Worker or alter production resources. All API requests are same-origin and intended to be served behind the existing Cloudflare Access policy.
 
-If you want to update components using the Shadcn CLI (e.g., `npx shadcn@latest add <component>`), it's generally safe for non-customized components. For the listed customized ones, you may need to manually merge changes to preserve the project's modifications and avoid overwriting RTL support or other updates.
+The staging Worker has a deliberate read-only allowlist. Status updates and team writes are not enabled through the staging allowlist; controls must not be assumed to work until that policy is separately reviewed. Owner-only staging archive and restore routes are the only data-changing dashboard actions exposed by the current staging policy. Archiving in the UI is gated on a successful CSV export during the current session. Permanent deletion remains disabled. No deletion endpoint is called by this dashboard.
 
-> If you don't require RTL support, you can safely update the 'RTL Updated Components' via the Shadcn CLI, as these changes are primarily for RTL compatibility. The 'Modified Components' may have other customizations to consider.
+Staging uses its own D1/R2 bindings:
+- D1: underhype-preview
+- R2: underhype-uploads-preview
 
-### Modified Components
+Never point this frontend at production while testing.
 
-- scroll-area
-- sonner
-- separator
-
-### RTL Updated Components
-
-- alert-dialog
-- calendar
-- command
-- dialog
-- dropdown-menu
-- select
-- table
-- sheet
-- sidebar
-- switch
-
-**Notes:**
-
-- **Modified Components**: These have general updates, potentially including RTL adjustments.
-- **RTL Updated Components**: These have specific changes for RTL language support (e.g., layout, positioning).
-- For implementation details, check the source files in `src/components/ui/`.
-- All other Shadcn UI components in the project are standard and can be safely updated via the CLI.
-
-</details>
-
-## Tech Stack
-
-**UI:** [ShadcnUI](https://ui.shadcn.com) (TailwindCSS + RadixUI)
-
-**Build Tool:** [Vite](https://vitejs.dev/)
-
-**Routing:** [TanStack Router](https://tanstack.com/router/latest)
-
-**Type Checking:** [TypeScript](https://www.typescriptlang.org/)
-
-**Linting/Formatting:** [ESLint](https://eslint.org/) & [Prettier](https://prettier.io/)
-
-**Icons:** [Lucide Icons](https://lucide.dev/icons/), [Tabler Icons](https://tabler.io/icons) (Brand icons only)
-
-**Auth (partial):** [Clerk](https://go.clerk.com/GttUAaK)
-
-## Run Locally
-
-Clone the project
+## Local development
 
 ```bash
-  git clone https://github.com/satnaing/shadcn-admin.git
+pnpm install
+pnpm dev
 ```
 
-Go to the project directory
+To use the real staging API locally, requests need to be served through the staging Worker origin and Cloudflare Access session. Avoid adding credentials or database secrets to Vite environment variables.
+
+## Build checks
 
 ```bash
-  cd shadcn-admin
+pnpm build
+pnpm lint
 ```
-
-Install dependencies
-
-```bash
-  pnpm install
-```
-
-Start the server
-
-```bash
-  pnpm run dev
-```
-
-## Sponsoring this project ❤️
-
-If you find this project helpful or use this in your own work, consider [sponsoring me](https://github.com/sponsors/satnaing) to support development and maintenance. You can [buy me a coffee](https://buymeacoffee.com/satnaing) as well. Don’t worry, every penny helps. Thank you! 🙏
-
-For questions or sponsorship inquiries, feel free to reach out at [satnaingdev@gmail.com](mailto:satnaingdev@gmail.com).
-
-### Current Sponsor
-
-- [Clerk](https://go.clerk.com/GttUAaK) - authentication and user management for the modern web
-
-## Author
-
-Crafted with 🤍 by [@satnaing](https://github.com/satnaing)
-
-## License
-
-Licensed under the [MIT License](https://choosealicense.com/licenses/mit/)
