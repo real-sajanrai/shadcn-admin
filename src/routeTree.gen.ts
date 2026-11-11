@@ -214,11 +214,6 @@ export interface FileRoutesByFullPath {
   '/analytics': typeof AuthenticatedAnalyticsRoute
   '/archived': typeof AuthenticatedArchivedRoute
   '/team': typeof AuthenticatedTeamRoute
-  '/contacts': typeof AuthenticatedContactsRoute
-  '/hiring': typeof AuthenticatedHiringRoute
-  '/analytics': typeof AuthenticatedAnalyticsRoute
-  '/archived': typeof AuthenticatedArchivedRoute
-  '/team': typeof AuthenticatedTeamRoute
   '/clerk': typeof ClerkAuthenticatedRouteRouteWithChildren
   '/settings': typeof AuthenticatedSettingsRouteRouteWithChildren
   '/forgot-password': typeof authForgotPasswordRoute
@@ -258,11 +253,6 @@ export interface FileRoutesByTo {
   '/404': typeof errors404Route
   '/500': typeof errors500Route
   '/503': typeof errors503Route
-  '/contacts': typeof AuthenticatedContactsRoute
-  '/hiring': typeof AuthenticatedHiringRoute
-  '/analytics': typeof AuthenticatedAnalyticsRoute
-  '/archived': typeof AuthenticatedArchivedRoute
-  '/team': typeof AuthenticatedTeamRoute
   '/': typeof AuthenticatedIndexRoute
   '/errors/$error': typeof AuthenticatedErrorsErrorRoute
   '/settings/account': typeof AuthenticatedSettingsAccountRoute
