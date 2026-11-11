@@ -2,7 +2,6 @@ import {useMemo,useState} from 'react'\nimport {useQuery} from '@tanstack/react-
 import {Link} from '@tanstack/react-router'
 import {Activity,ArrowDownToLine,ArrowUpRight,BriefcaseBusiness,MessageSquare,RefreshCw,Users,ShieldCheck} from 'lucide-react'
 import {Area,AreaChart,CartesianGrid,ResponsiveContainer,Tooltip,XAxis,YAxis} from 'recharts'
-import {useQueryClient} from '@tanstack/react-query'
 import {toast} from 'sonner'
 import {Badge} from '@/components/ui/badge'
 import {Button} from '@/components/ui/button'
